@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CTF密码编解码工具箱</title>
+    <link rel="stylesheet" href="./src/ui/styles.css">
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <header class="header">
+        <button class="hamburger" id="hamburgerBtn" aria-label="菜单">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div class="header-logo">
+            <span class="logo-icon">&#x1f510;</span>
+            <h1 class="logo-title">CTF密码编解码工具箱</h1>
+        </div>
+        <div class="header-search">
+            <span class="search-icon">&#x1f50d;</span>
+            <input type="text" id="search-input" class="search-input" placeholder="搜索密码类型...">
+        </div>
+        <button class="header-btn" id="btn-history" title="历史记录">
+            &#x1f4cb; 历史记录
+        </button>
+    </header>
+
+    <!-- 主体布局 -->
+    <div class="app-layout">
+        <!-- 左侧边栏 -->
+        <aside class="sidebar" id="sidebar">
+            <nav class="sidebar-nav" id="category-list">
+                <!-- 由 app.js 动态生成 -->
+            </nav>
+        </aside>
+
+        <!-- 侧边栏遮罩（移动端） -->
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+        <!-- 主内容区 -->
+        <main class="main-content">
+            <!-- 当前选中的密码类型 -->
+            <div class="cipher-title-bar">
+                <h2 class="cipher-title" id="tool-title">Base64</h2>
+            </div>
+
+            <!-- 输入区域 -->
+            <section class="input-section">
+                <label class="section-label" for="input-area">输入内容</label>
+                <textarea
+                    id="input-area"
+                    class="code-textarea"
+                    placeholder="请输入要编码/解码的内容..."
+                    rows="6"
+                ></textarea>
+            </section>
+
+            <!-- 操作按钮行 -->
+            <div class="action-bar">
+                <button class="btn btn-encode" id="btn-encode" title="编码">
+                    &#x1f512; 编码
+                </button>
+                <button class="btn btn-decode" id="btn-decode" title="解码">
+                    &#x1f513; 解码
+                </button>
+                <button class="btn btn-swap" id="btn-swap" title="交换输入输出">
+                    &#x2194;
+                </button>
+                <button class="btn btn-clear" id="btn-clear" title="清空">
+                    &#x1f5d1; 清空
+                </button>
+                <button class="btn btn-copy" id="btn-copy" title="复制结果">
+                    &#x1f4cb; 复制
+                </button>
+                <button class="btn btn-download" id="btn-download" title="下载结果">
+                    &#x1f4be; 下载
+                </button>
+                <button class="btn btn-auto-detect" id="btn-auto-detect" title="自动检测编码类型">
+                    &#x1f50e; 自动检测
+                </button>
+            </div>
+
+            <!-- 高级选项区域 -->
+            <section class="advanced-section" id="advanced-panel" style="display: none;">
+                <h3 class="advanced-title">&#x2699; 高级选项</h3>
+                <div class="advanced-options" id="advanced-content">
+                    <!-- 由 app.js 动态生成 -->
+                </div>
+            </section>
+
+            <!-- 输出区域 -->
+            <section class="output-section">
+                <label class="section-label" for="output-area">输出结果</label>
+                <textarea
+                    id="output-area"
+                    class="code-textarea output-textarea"
+                    placeholder="编码/解码结果将显示在这里..."
+                    rows="6"
+                    readonly
+                ></textarea>
+            </section>
+
+            <!-- 状态提示区域 -->
+            <div class="status-bar" id="status-bar">
+                <span class="status-text" id="status-text">就绪</span>
+            </div>
+        </main>
+    </div>
+
+    <!-- 历史记录面板遮罩 -->
+    <div class="history-overlay" id="history-overlay"></div>
+    <!-- 历史记录面板 -->
+    <div class="history-panel" id="history-panel">
+        <div class="history-header">
+            <h3>&#x1f4cb; 历史记录</h3>
+            <button class="history-close-btn" id="history-close-btn">&#x2715;</button>
+        </div>
+        <div class="history-list" id="history-list">
+            <!-- 由 app.js 动态生成 -->
+        </div>
+        <div class="history-footer">
+            <button class="btn btn-danger-outline" id="btn-clear-history">&#x1f5d1; 清空全部</button>
+            <button class="btn btn-secondary" id="history-done-btn">关闭</button>
+        </div>
+    </div>
+
+    <!-- Toast 提示 -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <p>&#x1f510; CTF密码编解码工具箱 — 专为CTF选手打造的多功能密码学工具</p>
+        <p class="footer-sub">支持进制编码 · ROT密码 · 古典密码 · 传输编码 · 脚本编码 · 特殊编码 · 网络编码 · 其他密码</p>
+    </footer>
+
+    <script type="module" src="./src/ui/app.js"></script>
+</body>
+</html>
