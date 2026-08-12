@@ -1,169 +1,62 @@
-# 🔐 CTF密码编解码工具箱
+# CTF 密码编解码工具箱（CTF-CryptoTools）
 
-专为 CTF 竞赛选手打造的多功能密码学工具箱，支持 **37 种**常见密码与编码格式的**双向编解码**，提供 macOS 和 Windows 桌面应用，双击即可运行。**（小白vibe coding的第一个项目，如有缺陷请多多指教！）**
+## 一、项目概述
 
-## 功能特性
+CTF 密码编解码工具箱是一款专为 **CTF（Capture The Flag）竞赛**选手打造的多功能密码学工具，内置 **8 大类、37 种**常见密码与编码格式的**双向编解码**能力，提供 macOS、Windows 桌面应用与 Web 版本，开箱即用、无需联网。**（小白vibe coding的第一个项目，如有缺陷请多多指教！）**
+
+## 二、功能亮点
+
+- **双向编解码**：每一种密码 / 编码均支持「编码」与「解码」两个方向，一键切换。
+- **覆盖广泛**：Base 系列、ROT 系列、古典密码、传输编码、脚本编码、特殊编码、网络编码、其他密码，共 37 种。
+- **智能识别**：对输入内容做启发式格式检测，自动给出可能的编码类型建议。
+- **高级配置**：凯撒偏移量、栅栏行数、分隔符、Shellcode 格式等均可自定义。
+- **贴心交互**：历史记录自动保存、一键复制、结果导出为 `.txt`、键盘快捷键（`Ctrl+Enter` 编码 / `Ctrl+Shift+Enter` 解码）。
+- **跨平台**：macOS（Apple Silicon）/ Windows（x64）桌面应用 + 浏览器 Web 版。
+
+## 三、支持工具一览
 
 | 分类       | 支持的工具                                                   |
 | ---------- | ------------------------------------------------------------ |
 | 🔢 进制编码 | Base16、Base32、Base36、Base58、Base62、Base64、Base85、Base91、Base92 |
-| 🔄 ROT密码  | ROT5、ROT13、ROT18、ROT47                                    |
+| 🔄 ROT 密码 | ROT5、ROT13、ROT18、ROT47                                    |
 | 🏛️ 古典密码 | 莫斯密码、培根密码、云影密码、埃特巴什码、波利比奥斯方阵、凯撒密码、栅栏密码 |
 | 📡 传输编码 | UUencode、XXencode、AAencode、JJencode                       |
 | 🧠 脚本编码 | Brainfuck、JSFuck、Jother                                    |
-| ✨ 特殊编码 | Emoji编码、核心价值观编码、与佛论禅编码                      |
-| 🌐 网络编码 | URL编码、Shellcode编码、Handycode编码、Quoted-Printable      |
-| 🔑 其他密码 | 敲击码、A1z26密码、二进制编码                                |
+| ✨ 特殊编码 | Emoji 编码、核心价值观编码、与佛论禅编码                     |
+| 🌐 网络编码 | URL 编码、Shellcode 编码、Handycode 编码、Quoted-Printable   |
+| 🔑 其他密码 | 敲击码、A1z26 密码、二进制编码                               |
 
-**核心能力：**
+## 四、技术特点
 
-- 所有工具均支持**编码/解码双向操作**
-- 自动检测输入内容的编码类型（启发式匹配）
-- 高级选项面板（凯撒偏移量、栅栏行数、分隔符等）
-- 历史记录（自动保存、点击恢复、清空）
-- 一键复制、结果导出为 `.txt` 文件
-- 键盘快捷键：`Ctrl+Enter` 编码、`Ctrl+Shift+Enter` 解码
+- **纯 JavaScript（ESM）**：核心编解码模块零运行时第三方依赖，浏览器与 Node.js 通用。
+- **模块化设计**：每种编码独立封装，统一 `encode / decode` 接口，便于扩展维护。
+- **完整测试**：9 个测试套件、**570 个用例**，覆盖正常 / 边界 / 错误 / 往返一致性 / 性能 / CTF 多层嵌套端到端场景。
 
----
+## 五、文件说明
 
-## 一、快速开始（桌面应用，推荐）
+本文件夹包含两部分内容：
 
-### macOS（Apple Silicon / arm64）
+- **`源码/`**：完整项目源代码（含测试用例与使用文档）。
+- **`发行版/`**：可直接运行的桌面应用安装包。
+  - `CTF密码编解码工具箱-1.0.0-arm64-mac.zip` —— macOS（Apple Silicon）
+  - `CTF密码编解码工具箱-1.0.0-win64-x64.zip` —— Windows（x64）
 
-1. 打开 `release/` 目录
-2. 双击 `mac-arm64/CTF密码编解码工具箱.app`
+## 六、使用说明
 
-> **首次运行提示**：由于应用未经过 Apple 官方签名，首次打开会提示"无法打开"。
-> 解决方法（任选其一）：
->
-> - **右键点击** `.app` → 选择「打开」→ 在弹出的对话框中点击「打开」
-> - 或在终端执行：`xattr -cr "release/mac-arm64/CTF密码编解码工具箱.app"`
+### 桌面应用
 
-### Windows（x64）
+- **macOS**：解压 `arm64-mac.zip`，双击 `.app` 运行；首次打开如提示「无法验证开发者」，右键点击 App → 「打开」即可。
+- **Windows**：解压 `win64-x64.zip`，双击 `CTF密码编解码工具箱.exe` 运行。
 
-1. 打开 `release/win-unpacked/` 目录
-2. 双击 `CTF密码编解码工具箱.exe`
-
-> 或将 `release/CTF密码编解码工具箱-1.0.0-win64-x64.zip` 解压到任意目录后运行其中的 `.exe`。
-
----
-
-## 二、从源码运行（开发者）
-
-### 环境要求
-
-- Node.js ≥ 18（推荐 20+）
-- npm ≥ 9
-
-### 安装依赖
+### 从源码运行
 
 ```bash
 npm install
+npm start        # 桌面应用
+npm run serve    # Web 版（浏览器访问 http://localhost:3000）
+npm test         # 运行 570 个单元测试
 ```
 
-> 国内网络建议使用镜像加速：
->
-> ```bash
-> export ELECTRON_MIRROR="https://npmmirror.com/mirrors/electron/"
-> export ELECTRON_BUILDER_BINARIES_MIRROR="https://npmmirror.com/mirrors/electron-builder-binaries/"
-> npm install
-> ```
+## 七、免责声明
 
-### 启动桌面应用
-
-```bash
-npm start
-```
-
-### 启动 Web 版本（浏览器）
-
-```bash
-npm run serve
-# 浏览器访问 http://localhost:3000
-```
-
----
-
-## 三、运行测试
-
-```bash
-npm test
-```
-
-测试覆盖：正常场景、边界场景（空输入/特殊字符/中文）、错误场景、编解码往返一致性、性能（≤100ms）和 CTF 多层嵌套端到端场景。共 **9 个套件、570 个用例**。
-
----
-
-## 四、打包桌面应用
-
-### 打包 macOS（在 macOS 上执行）
-
-```bash
-npm run build:mac
-```
-
-产物输出到 `release/`：
-
-- `mac-arm64/CTF密码编解码工具箱.app`（可直接运行）
-- `CTF密码编解码工具箱-1.0.0-arm64-mac.zip`（传输用）
-
-### 打包 Windows（推荐在 Windows 机器上执行）
-
-```bash
-npm run build:win
-```
-
-产物输出到 `release/`：
-
-- `CTF密码编解码工具箱 1.0.0.exe`（便携单文件版）
-- `win-unpacked/`（免安装完整目录）
-
-> **说明**：在 macOS 上交叉打包 Windows 的便携单文件 `.exe` 需要 wine 环境。当前已提供 `win-unpacked/` 完整目录（可在 Windows 直接运行），如需单文件 `.exe`，请在 Windows 机器上执行上述命令。
-
----
-
-## 五、项目结构
-
-```
-CryptoTools/
-├── index.html                 # 主界面
-├── server.js                  # Web 开发服务器
-├── package.json               # 项目配置 + 打包配置
-├── electron/
-│   └── main.js                # Electron 主进程
-├── src/
-│   ├── core/                  # 核心编解码模块
-│   │   ├── index.js           #   统一导出 + 分类映射
-│   │   ├── base-encodings.js  #   进制编码
-│   │   ├── rot-ciphers.js     #   ROT密码
-│   │   ├── classic-ciphers.js #   古典密码
-│   │   ├── transmission-encodings.js # 传输编码
-│   │   ├── esoteric.js        #   脚本编码
-│   │   ├── special-encodings.js # 特殊编码
-│   │   ├── network-encodings.js # 网络编码
-│   │   └── other-ciphers.js   #   其他密码
-│   └── ui/                    # 前端界面
-│       ├── app.js             #   交互逻辑
-│       ├── styles.css         #   样式
-│       └── history.js         #   历史记录
-├── tests/                     # 单元测试（9 个套件）
-└── release/                   # 打包产物（.app / .exe / .zip）
-```
-
----
-
-## 六、模块化开发说明
-
-每个编码/密码类型都被封装为独立模块，统一输入输出接口：
-
-```javascript
-// 直接函数导出（如 Base64、URL 编码等）
-encodeBase64(input) => string
-decodeBase64(input) => string
-
-// 对象导出（如莫斯密码、Brainfuck 等）
-morse.encode(input, options?) => string
-morse.decode(input, options?) => string
-```
-
-所有模块均为 **纯 JavaScript（ESM）**，无环境依赖，同时兼容浏览器与 Node.js。解码失败时抛出带明确信息的 `Error`，前端统一捕获并友好提示。
+本项目仅供 CTF 竞赛学习、密码学研究和安全教学使用，请勿用于任何非法用途。
