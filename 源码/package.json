@@ -1,0 +1,72 @@
+{
+  "name": "crypto-tools",
+  "version": "1.0.0",
+  "description": "CTF密码编解码工具箱 - 支持50+种常见CTF密码与编码格式的双向编解码",
+  "main": "electron/main.js",
+  "type": "module",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron .",
+    "serve": "node server.js",
+    "test": "node --experimental-vm-modules node_modules/.bin/jest --verbose",
+    "test:coverage": "node --experimental-vm-modules node_modules/.bin/jest --coverage",
+    "build:mac": "electron-builder --mac",
+    "build:win": "electron-builder --win",
+    "build:linux": "electron-builder --linux",
+    "dist": "electron-builder"
+  },
+  "keywords": ["ctf", "crypto", "encode", "decode", "cipher"],
+  "license": "MIT",
+  "author": "CTF Tools",
+  "devDependencies": {
+    "@jest/globals": "^29.7.0",
+    "jest": "^29.7.0",
+    "electron": "^33.0.0",
+    "electron-builder": "^25.0.0"
+  },
+  "build": {
+    "appId": "com.ctf.cryptotools",
+    "productName": "CTF密码编解码工具箱",
+    "copyright": "Copyright © 2026 CTF Tools",
+    "directories": {
+      "output": "release",
+      "buildResources": "build"
+    },
+    "files": [
+      "index.html",
+      "src/**/*",
+      "electron/**/*",
+      "package.json"
+    ],
+    "asar": true,
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "category": "public.app-category.developer-tools"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "portable",
+          "arch": ["x64"]
+        }
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "category": "Utility"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "CTF密码编解码工具箱"
+    }
+  }
+}
