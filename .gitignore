@@ -6,6 +6,11 @@ release/
 dist/
 out/
 
+# 源码压缩包与作品整理目录（仅用于上传发布，不入库）
+CTF-CryptoTools-source.zip
+CTF密码编解码工具箱-作品/
+install-brew.sh
+
 # 测试覆盖率
 coverage/
 

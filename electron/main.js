@@ -71,7 +71,7 @@ function createWindow() {
     minWidth: 900,
     minHeight: 600,
     title: 'CTF密码编解码工具箱',
-    backgroundColor: '#1a1a2e',
+    backgroundColor: '#0f1115',
     show: false,
     autoHideMenuBar: true,
     webPreferences: {

@@ -62,7 +62,6 @@ export {
 // ========== 分组导出，方便按类别查找 ==========
 export const CATEGORIES = {
   '进制编码': {
-    icon: '🔢',
     tools: {
       base16: { name: 'Base16(Hex)', encode: 'encodeBase16', decode: 'decodeBase16' },
       base32: { name: 'Base32', encode: 'encodeBase32', decode: 'decodeBase32' },
@@ -76,7 +75,6 @@ export const CATEGORIES = {
     },
   },
   'ROT密码': {
-    icon: '🔄',
     tools: {
       rot5: { name: 'ROT5（数字旋转）', encode: 'rot5Encode', decode: 'rot5Decode' },
       rot13: { name: 'ROT13（字母旋转）', encode: 'rot13Encode', decode: 'rot13Decode' },
@@ -85,7 +83,6 @@ export const CATEGORIES = {
     },
   },
   '古典密码': {
-    icon: '🏛️',
     tools: {
       morse: { name: '莫斯密码', encode: 'morse_encode', decode: 'morse_decode' },
       bacon: { name: '培根密码', encode: 'bacon_encode', decode: 'bacon_decode' },
@@ -97,7 +94,6 @@ export const CATEGORIES = {
     },
   },
   '传输编码': {
-    icon: '📡',
     tools: {
       uuencode: { name: 'UUencode', encode: 'uuencode_encode', decode: 'uuencode_decode' },
       xxencode: { name: 'XXencode', encode: 'xxencode_encode', decode: 'xxencode_decode' },
@@ -106,7 +102,6 @@ export const CATEGORIES = {
     },
   },
   '脚本编码': {
-    icon: '🧠',
     tools: {
       brainfuck: { name: 'Brainfuck', encode: 'brainfuck_encode', decode: 'brainfuck_decode' },
       jsfuck: { name: 'JSFuck', encode: 'jsfuck_encode', decode: 'jsfuck_decode' },
@@ -114,7 +109,6 @@ export const CATEGORIES = {
     },
   },
   '特殊编码': {
-    icon: '✨',
     tools: {
       emoji: { name: 'Emoji编码', encode: 'emoji_encode', decode: 'emoji_decode' },
       core_values: { name: '核心价值观编码', encode: 'csv_encode', decode: 'csv_decode' },
@@ -122,7 +116,6 @@ export const CATEGORIES = {
     },
   },
   '网络编码': {
-    icon: '🌐',
     tools: {
       url: { name: 'URL编码', encode: 'urlEncode', decode: 'urlDecode' },
       shellcode: { name: 'Shellcode编码', encode: 'shellcodeEncode', decode: 'shellcodeDecode' },
@@ -131,7 +124,6 @@ export const CATEGORIES = {
     },
   },
   '其他密码': {
-    icon: '🔑',
     tools: {
       tapCode: { name: '敲击码', encode: 'tapCodeEncode', decode: 'tapCodeDecode' },
       a1z26: { name: 'A1z26密码', encode: 'a1z26Encode', decode: 'a1z26Decode' },

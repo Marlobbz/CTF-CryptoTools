@@ -1,6 +1,6 @@
 {
   "name": "crypto-tools",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "CTF密码编解码工具箱 - 支持50+种常见CTF密码与编码格式的双向编解码",
   "main": "electron/main.js",
   "type": "module",
